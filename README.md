@@ -7,35 +7,35 @@ The backend, a modified version of [Electrum](https://github.com/spesmilo/electr
 The frontend, a modified version of [Electrum for Laravel 5.4+](https://github.com/AraneaDev/laravel-electrum), runs as a Web frontend on [Laravel](https://laravel.com/) to interact with bitcoin users via a Web browser. Laravel hosts an application written in PHP using
 Node.js for the rendering on the client (browser).
 
-These two components are configured to run in a single [IBM Hyper Protect Virtual Server](https://cloud.ibm.com/catalog/services/hyper-protect-virtual-server), as illustrated in the following diagram. It can optionally encrypt/decrypt a wallet file using [IBM Cloud Hyper Protect Crypto Services](https://cloud.ibm.com/catalog/services/hyper-protect-crypto-services) (zHSM) to protect the encryption key. 
+These two components are configured to run in a single hyper-protect-virtual-server), as illustrated in the following diagram. It can optionally encrypt/decrypt a wallet file using  (zHSM) to protect the encryption key. 
 
 ![blockdiagram](images/diagram.png)
 
 When you have completed this code pattern, you will understand how to:
 
 * Build and run an Electrum Bitcoin Digital Wallet application 
-* Stand up an IBM Cloud Hyper Protect Virtual Server
-* (Optional) Integrate with IBM Cloud Hyper Protect Crypto Services to encrypt the wallet
+* Stand up an  Cloud Hyper Protect Virtual Server
+* (Optional) Integrate with  Cloud Hyper Protect Crypto Services to encrypt the wallet
 
 
 ## Steps
 
-The frontend and backend applications can both be run locally, or on a Linux VM in the IBM Cloud,
-for example an [IBM Cloud Hyper Protect Virtual Server](https://cloud.ibm.com/catalog/services/hyper-protect-virtual-server).
+The frontend and backend applications can both be run locally, or on a Linux VM in the Cloud,
+for example an 
 
 ![HPVS_find](images/SearchHPVS.png)
 
 ![HPVS_create](images/HPVSFields.png)
 
-### Create your IBM Cloud Hyper Protect Virtual Server Instance
+### Create your Cloud Hyper Protect Virtual Server Instance
 
-You can find the instructions [here](https://cloud.ibm.com/docs/services/hp-virtual-servers?topic=hp-virtual-servers-provision).
+You can find the instructions .
 
-Make sure to copy and paste in your SSH public key. If you don't have one already, please follow the guide [here]( https://cloud.ibm.com/docs/vpc?topic=vpc-ssh-keys).
+Make sure to copy and paste in your SSH public key. If you don't have one already, please follow the guide .
 
 ### Log into your Virtual Server
 
-You can find the instructions [here](https://cloud.ibm.com/docs/services/hp-virtual-servers?topic=hp-virtual-servers-connect_vs).
+You can find the instructions .
 
 ### How to build the Wallet application
 
@@ -63,12 +63,12 @@ Refer to [an instruction](https://docs.github.com/en/github/authenticating-to-gi
 Store your access token into `ACCESS_TOKEN` environment variable.
 
 ```
-$ git clone https://github.com/IBM/secure-bitcoin-wallet.git
+$ git clone https://github.com/Mohd-azm/secure-bitcoin-wallet-master.git
 $ cd secure-bitcoin-wallet
 $ docker build --build-arg ACCESS_TOKEN=${ACCESS_TOKEN} -t secure-bitcoin-wallet .
 ```
 
-By default, the Dockerfile installs grpc python packages, such as `grpcio-tools`, to access IBM Cloud Hyper Protect Crypto Services (HPCS).
+By default, the Dockerfile installs grpc python packages, such as `grpcio-tools`, to access Cloud Hyper Protect Crypto Services (HPCS).
 Since this step can take some time and resources (e.g. memory), you can skip it by adding `NO_GRPC_BUILD=1` as a build argument.
 This option allows you to build a container on a small VM, such as a free instance of HPVS, 
 if you are not planning to use HPCS.
@@ -98,11 +98,11 @@ a wallet is running in container ${WALLET_NAME}-wallet at port xxxxx
 
 ### How to encrypt the wallet with HPCS (optional)
 
-Optionally, you can use an HPCS instance to encrypt/decrypt a wallet. To use an HPCS on IBM Cloud, you need to supply the following four parameters.
+Optionally, you can use an HPCS instance to encrypt/decrypt a wallet. To use an HPCS on  Cloud, you need to supply the following four parameters.
 
-- ZHSM: the domain name and the port number of the HPCS instance (e.g. ep11.{location}.hs-crypto.cloud.ibm.com:1234)
+- ZHSM: the domain name and the port number of the HPCS instance 
 - APIKEY: the api key for the HPCS instance (e.g. xxxxxxx-xxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)
-- IAM_ENDPOINT: the URL of an IAM endpoint (this is optional. a default value, https://iam.cloud.ibm.com, is used if not specified)
+- IAM_ENDPOINT: the URL of an IAM endpoint (this is optional. a default value, , is used if not specified)
 
 If `ZHSM` is not defined, a default software AES is used.
 If `ZHSM` is defined but `APIKEY` is not, we assume the HPCS instance doesn't require authentication
@@ -151,7 +151,7 @@ $ docker run -d -v ${WALLET_NAME}:/data -e WALLET=/data/electrum/testnet/wallets
 
 ## License
 
-[Apache 2.0](https://github.com/IBM/secure-bitcoin-wallet/blob/master/LICENSE)
+
 
 ## Contributor License Agreement (CLA)
 
